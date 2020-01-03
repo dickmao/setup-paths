@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 
-async function run(): Promise<void> {
+async function run() {
   try {
     const paths: string = core.getInput('paths');
     const PATH = process.env.PATH;
