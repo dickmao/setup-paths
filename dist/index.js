@@ -73,10 +73,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
+const os_1 = __webpack_require__(87);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const paths = core.getInput('paths');
+            const home = os_1.homedir();
+            const paths = core.getInput('paths').split(":").
+                map(x => os_1.homedir + "/" + x).join(":");
             const PATH = process.env.PATH;
             core.exportVariable("PATH", `${PATH}:${paths}`);
         }
