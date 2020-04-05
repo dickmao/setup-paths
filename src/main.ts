@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 
-async function run() : Promise<string> {
+async function run() {
     const osHomedir = require('os-homedir');
     try {
         const paths : string = core.getInput('paths').split(":").
