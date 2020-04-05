@@ -1,11 +1,10 @@
 import * as core from '@actions/core'
-import { homedir } from "os";
 
-async function run() {
+async function run() : void {
+    const osHomedir = require('os-homedir');
     try {
-        const home = homedir();
         const paths : string = core.getInput('paths').split(":").
-              map(x => homedir + "/" + x).join(":");
+              map(x => osHomedir() + "/" + x).join(":");
         const PATH = process.env.PATH;
         core.exportVariable("PATH", `${PATH}:${paths}`);
     } catch (error) {
